@@ -6,6 +6,8 @@ Description : Fine coregistration of 2 DEMs using the method presented in Nuth &
 
 Author : Amaury Dehecq
 Date : June 2015
+
+This script has been modified by Nick Viner, 2021, to be used within a PyQt5 application.
 """
 
 #Python libraries
@@ -35,6 +37,7 @@ class WorkerSignals(QtCore.QObject):
     updateSignal = QtCore.pyqtSignal(str)
     finishedSignal = QtCore.pyqtSignal(int)
 
+#Class for handling the co-registration function, and built to be run by a Qt Threadpool.
 class coregistration(QtCore.QRunnable):
     
     def __init__(self, master_dem_fp, slave_dem_fp, outfile, niter, plot, maskfile, shp, buffer, nodata1, nodata2, min_count, zmax, zmin, resmax, degree, grid, save, IS, doRamp):
